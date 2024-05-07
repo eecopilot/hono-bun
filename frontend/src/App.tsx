@@ -1,18 +1,27 @@
 import { useState } from 'react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [totalSpent, setTotalSpent] = useState(0);
 
   return (
-    <>
-      <div className='flex flex-col'>
-        <button onClick={() => setCount((count) => count + 1)}>up</button>
-        <button onClick={() => setCount((count) => count - 1)}>down</button>
-        <p className='text-3xl text-center'>{count}</p>
-      </div>
-    </>
+    <Card className='w-[350px] m-auto'>
+      <CardHeader>
+        <CardTitle>Total Spent</CardTitle>
+        <CardDescription>The total amount you've spent.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>{totalSpent}</p>
+      </CardContent>
+    </Card>
   );
 }
 
