@@ -48,7 +48,8 @@ export const expensesRoute = new Hono()
     c.status(201);
     return c.json({ expense });
   })
-  .get('/total-spent', (c) => {
+  .get('/total-spent', async (c) => {
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
     return c.json({ total: 1092 });
   })
   .get('/:id{[0-9]+}', (c) => {
