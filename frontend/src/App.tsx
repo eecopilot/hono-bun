@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Card,
   CardContent,
@@ -12,6 +12,14 @@ import './App.css';
 function App() {
   const [totalSpent, setTotalSpent] = useState(0);
 
+  useEffect(() => {
+    const fetchTotalSpent = async () => {
+      const res = await fetch('/api/expenses/total-spent');
+      const data = await res.json();
+      setTotalSpent(data.total);
+    };
+    fetchTotalSpent();
+  }, []);
   return (
     <Card className='w-[350px] m-auto'>
       <CardHeader>
